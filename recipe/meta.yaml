@@ -6,8 +6,8 @@ package:
   version: {{ environ.get('FERMITOOLS_VERSION', version) }}
 
 source:
-  git_url: https://github.com/fermi-lat/Sciencetools.git
-  git_tag: "{{ environ.get('GITHUB_REF_NAME', 'master') }}" 
+  git_url: https://github.com/JamesAmrhein/ScienceTools.git
+  git_tag: "{{ environ.get('GITHUB_REF_NAME', 'f26-cpp17-compliance') }}" 
   git_submodules: true
 
 build:
