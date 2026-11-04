@@ -93,7 +93,7 @@ jobs:
         continue-on-error: true # Default false is to fail at first error
         with:
           meta_yaml_dir: recipe # It's using recipe/meta.yaml for building the package. 
-          user: fermi # Replace with your Anaconda username (or an Anaconda organization username)
+          user: JamesAmrhein # fermi Replace with your Anaconda username (or an Anaconda organization username)
           token: ${{ secrets.ANACONDA_TOKEN }} # Setup under the GITHUB Settings 
           label: ${{ inputs.build_label }} # dev
           overwrite: true # Do not abort the uploading if a package with the same name is already present in the Anaconda channel.
