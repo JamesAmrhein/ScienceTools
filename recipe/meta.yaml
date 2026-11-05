@@ -6,8 +6,8 @@ package:
   version: {{ environ.get('FERMITOOLS_VERSION', version) }}
 
 source:
-  git_url: https://github.com/fermi-lat/Sciencetools.git
-  git_tag: "{{ environ.get('GITHUB_REF_NAME', 'master') }}" 
+  git_url: https://github.com/JamesAmrhein/ScienceTools
+  git_tag: "{{ environ.get('GITHUB_REF_NAME', '') }}" 
   git_submodules: true
 
 build:
@@ -100,7 +100,7 @@ test:
     - UnbinnedAnalysis
 
 about:
-  home: https://github.com/fermi-lat/Sciencetools
+  home: https://github.com/JamesAmrhein/ScienceTools
   license: BSD-3-Clause
   summary: Conda recipe files for the Fermi Sciencetools analysis package Fermitools
   license_file: LICENSE.txt

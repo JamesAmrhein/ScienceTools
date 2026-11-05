@@ -62,7 +62,7 @@ jobs:
 
           # Use the LATEST version, not a specific version.
           # "fermi/label/dev::fermitools=${{inputs.fermitools_pkg_ver}}" "fermi/label/dev::fermitools"
-          conda install --name test_fermipy  "fermi/label/${{inputs.build_label}}::fermitools=${{inputs.fermitools_pkg_ver}}" python=3.12
+          conda install --name test_fermipy  "conda-pkg-testing/label/${{inputs.build_label}}::fermitools=${{inputs.fermitools_pkg_ver}}" python=3.12
 
           # This currently installs Fermipy 1.1 (not v1.4)  and pytest
           conda install --name test_fermipy -c conda-forge fermipy pytest

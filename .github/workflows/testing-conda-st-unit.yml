@@ -72,7 +72,7 @@ jobs:
            echo "Run tests testing-env vars.CONTINUE_ON_ERROR "
            echo "TESTING BRANCH  ${{ github.ref_name }}"
            #  "fermi/label/${{inputs.build_label}}::fermitools=${{inputs.fermitools_pkg_ver}}" "fermi/label/dev::fermitools=${{inputs.fermitools_pkg_ver}}"
-           conda install --name testing-env "fermi/label/${{inputs.build_label}}::fermitools=${{inputs.fermitools_pkg_ver}}" python=3.12
+           conda install --name testing-env "conda-pkg-testing/label/${{inputs.build_label}}::fermitools=${{inputs.fermitools_pkg_ver}}" python=3.12
            mkdir -p test_results
            cd test_results/
            echo "Starting Unit Tests"

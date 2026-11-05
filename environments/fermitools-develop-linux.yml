@@ -1,7 +1,7 @@
 name: fermi-develop-linux
 channels:
   - conda-forge
-  - fermi
+  - conda-pkg-testing
 dependencies:
   - anaconda-client
   - cfitsio
