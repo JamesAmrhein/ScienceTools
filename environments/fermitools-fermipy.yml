@@ -1,7 +1,7 @@
 name: fermitools-fermipy-testing
 channels:
   - conda-forge
-  - conda-pkg-testing
+  - jamesamrhein
   - fermi
 dependencies:
   - python=3.12

@@ -71,6 +71,9 @@ requirements:
     - zlib # [linux]
     - xerces-c # [linux]
     - f2c
+    - {{ compiler('c') }}      # Automatically pulls gcc/clang and binutils (ar, ld)
+    - {{ compiler('cxx') }}    # If you are also compiling C++ code
+
     
   run:
     - astropy >7.0.0
@@ -84,7 +87,8 @@ requirements:
     - xerces-c # [linux]
     - f2c
     - aplpy # [osx or x86_64]
-  
+
+ 
 test:
   # Standard modules 
   imports:
@@ -98,6 +102,8 @@ test:
     - pyLikelihood
     - SummedLikelihood
     - UnbinnedAnalysis
+  commands:
+    - test -f $PREFIX/etc/conda/activate.d/activate_fermitools.sh  # [unix]
 
 about:
   home: https://github.com/JamesAmrhein/ScienceTools

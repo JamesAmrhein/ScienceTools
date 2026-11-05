@@ -1,8 +1,8 @@
 name: fermi-develop-osx
 channels:
   - conda-forge
-  - conda-pkg-testing 
   - fermi
+  - jamesamrhein
 dependencies:
   - anaconda-client
   - cfitsio
