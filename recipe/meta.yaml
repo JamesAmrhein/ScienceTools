@@ -67,6 +67,7 @@ requirements:
     - make
     - pkg-config
     - python 3.12
+    - python3-dev # [linux]
     - swig>=4.1
     - zlib # [linux]
     - xerces-c # [linux]
