@@ -11,5 +11,6 @@ dependencies:
   - python=3.12
   - swig>=4.1
   - f2c
+  - cctools
   # - "liblzma-devel<6.0"
   # - conda-verify

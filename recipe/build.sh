@@ -14,6 +14,7 @@ fi
 echo "Installing conda forge cxx compiler"
 conda install --yes conda-forge::cxx-compiler
 
+# -DPython3_EXECUTABLE="${BUILD_PREFIX}/bin/python3" \
 if [ "$(uname)" == "Darwin" ]; then
     echo "Configuring for macOS"
     cmake -S . \
@@ -22,7 +23,7 @@ if [ "$(uname)" == "Darwin" ]; then
         -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_FILE \
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
         -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
-        -DPython3_EXECUTABLE="${BUILD_PREFIX}/bin/python3" \
+        -DPython3_EXECUTABLE="${PREFIX}/bin/python3" \
         -DPython3_NumPy_INCLUDE_DIR="${SP_DIR}/numpy/core/include" \
         ${CMAKE_ARGS}
 else

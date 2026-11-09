@@ -6,8 +6,8 @@ package:
   version: {{ environ.get('FERMITOOLS_VERSION', version) }}
 
 source:
-  git_url: https://github.com/JamesAmrhein/ScienceTools
-  git_tag: "{{ environ.get('GITHUB_REF_NAME', '') }}" 
+  git_url: https://github.com/JamesAmrhein/ScienceTools.git
+  git_tag: "{{ environ.get('GITHUB_REF_NAME', 'f26-cpp17-compliance') }}" 
   git_submodules: true
 
 build:
@@ -59,22 +59,23 @@ build:
 requirements:
 
   build:
-    - libgomp  # [linux]
-    - llvm-openmp # [osx]
-    - binutils  # missing ar command needed
-    - cfitsio
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - binutils  # [linux]
     - cmake >=4.0
     - make
     - pkg-config
+    - swig>=4.1
+
+  host:
+    - libgomp  # [linux]
+    - llvm-openmp # [osx]
+    - cfitsio
     - python 3.12
     - python-devel # [linux]
-    - swig>=4.1
     - zlib # [linux]
     - xerces-c # [linux]
     - f2c
-    - {{ compiler('c') }}      # Automatically pulls gcc/clang and binutils (ar, ld)
-    - {{ compiler('cxx') }}    # If you are also compiling C++ code
-
     
   run:
     - astropy >7.0.0
@@ -88,8 +89,7 @@ requirements:
     - xerces-c # [linux]
     - f2c
     - aplpy # [osx or x86_64]
-
- 
+  
 test:
   # Standard modules 
   imports:
