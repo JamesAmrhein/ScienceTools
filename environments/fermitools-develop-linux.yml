@@ -11,7 +11,6 @@ dependencies:
   - libgomp
   - zlib
   - python=3.12
-  - python-devel
   - xerces-c
   - swig>=4.1
   - f2c

@@ -72,7 +72,6 @@ requirements:
     - llvm-openmp # [osx]
     - cfitsio
     - python 3.12
-    - python-devel # [linux]
     - zlib # [linux]
     - xerces-c # [linux]
     - f2c
