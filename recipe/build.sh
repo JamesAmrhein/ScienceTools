@@ -17,8 +17,8 @@ fi
 if [ "$(uname)" == "Darwin" ]; then
     echo "Configuring for macOS"
     cmake -S . \
-        -B Debug \
-        -DCMAKE_BUILD_TYPE=Debug \
+        -B Release \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_FILE \
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
         -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
@@ -29,8 +29,8 @@ else
     echo "Configuring for Linux $(uname -m)"
 
     cmake -S . \
-        -B Debug \
-        -DCMAKE_BUILD_TYPE=Debug \
+        -B Release \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_C_FLAGS="-fPIC -std=gnu17" -DCMAKE_CXX_FLAGS="-fPIC" \
 		-DPython3_EXECUTABLE="$(which python)" \
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
@@ -43,7 +43,7 @@ cat /etc/os-release
 
 fi
 
-cmake --build Debug --clean-first --parallel ${CPU_COUNT:-2} --target=install 
+cmake --build Release --clean-first --parallel ${CPU_COUNT:-2} --target=install 
 #cmake --build Debug --clean-first --target=install --verbose
 # Copy the activate and deactivate scripts
 mkdir -p $PREFIX/etc/conda/activate.d
@@ -59,6 +59,10 @@ cp recipe/deactivate.csh $PREFIX/etc/conda/deactivate.d/deactivate_${condaname}.
 cp recipe/tests/data/inputs/* $PREFIX/share/${condaname}/data
 mkdir -p $PREFIX/share/${condaname}/data/outref
 cp recipe/tests/data/outref/* $PREFIX/share/${condaname}/data/outref
+
+# Copy evtbin test outref data
+mkdir -p $PREFIX/share/${condaname}/data/evtbin
+cp -r src/evtbin/data/outref $PREFIX/share/${condaname}/data/evtbin/
 
 # Copy utils helper script directory
 mkdir -p $PREFIX/share/${condaname}/utils
