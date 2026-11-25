@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/JamesAmrhein/ScienceTools.git
-  git_tag: "{{ environ.get('GITHUB_REF_NAME', 'f26-cpp17-compliance') }}" 
+  git_tag: "{{ environ.get('GITHUB_REF_NAME', 'master') }}" 
   git_submodules: true
 
 build:

@@ -18,6 +18,9 @@ class Fermitools < Formula
   depends_on "pkgconf" => :build
   depends_on "swig" => :build
 
+  depends_on "pytest" => :test
+  depends_on "fermi-lat/fermitools/fermitools-test-scripts-data"  => :test
+
   depends_on "cfitsio"
   depends_on "fermi-lat/fermitools/fermitools-data"
   depends_on "libomp"
@@ -136,5 +139,11 @@ class Fermitools < Formula
     ENV["CALDBALIAS"] = (caldb/"software/tools/alias_config.fits").to_s
     system python, "-c", "import yaml, numpy, pyLikelihood, UnbinnedAnalysis, BinnedAnalysis"
     assert_predicate bin/"gtburst", :executable?
+    system libexec/"bin/pip", "install", "--quiet", "Pmw", "astropy", "junit-xml"
+    system "git", "clone", "https://github.com/fermi-lat/ScienceTools.git", testpath/"repo"
+    assert_path_exists testpath/"repo/.git"
+    system testpath/"recipe/tests/ST-unit-test", "-w", "-v"    
+    system testpath/"recipe/tests/ST-AGN-thread-test", "-w" , "-d"
+
   end
 end
